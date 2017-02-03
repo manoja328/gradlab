@@ -60,6 +60,9 @@ while True:
         tamb=datastream[6401]
         ptat=datastream[6402:]
         img=np.reshape(image,(64,80))
+        max_temp = np.max(img/10.0 - 273)
+        min_temp = np.min(img/10.0 - 273)
+        print("Max: %f C  Min: %f C"%(max_temp,min_temp))
         res=256*(img - img.min())/(img.max() - img.min())
         r=np.uint8(res)
         imgresized = cv2.resize(r,(400,400))
